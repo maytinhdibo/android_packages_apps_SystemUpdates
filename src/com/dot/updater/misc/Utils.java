@@ -94,9 +94,10 @@ public class Utils {
         String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
                 SystemProperties.get(Constants.PROP_DEVICE));
         String type = SystemProperties.get(Constants.PROP_RELEASE_TYPE).toLowerCase(Locale.ROOT);
-        String downloadUrl = Constants.DOWNLOAD_URL.replace("${device}", device)
-                .replace("${type}", type.equals("gapps") ? "gapps" : "vanilla")
-                .replace("${file_name}", update.getName());
+        // String downloadUrl = Constants.DOWNLOAD_URL.replace("${device}", device)
+        //         .replace("${type}", type.equals("gapps") ? "gapps" : "vanilla")
+        //         .replace("${file_name}", update.getName());
+        String downloadUrl = object.getString("url");
         update.setDownloadUrl(downloadUrl);
         update.setVersion(object.getString("version"));
         Changelog changelog = new Changelog();
