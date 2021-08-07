@@ -24,6 +24,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.icu.text.DateFormat;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -33,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -130,6 +132,22 @@ public class UpdatesActivity extends UpdatesListActivity {
         bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce);
 
         actionCheck.findViewById(R.id.actionCheckButton).setOnClickListener(view -> downloadUpdatesList(true));
+
+        findViewById(R.id.donate).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
+                startActivity(browserIntent);
+            }
+        });
+
+        findViewById(R.id.tele).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/maytinhdibo_headquater"));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     @Override
