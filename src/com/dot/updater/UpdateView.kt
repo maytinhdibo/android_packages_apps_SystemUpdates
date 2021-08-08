@@ -77,6 +77,7 @@ class UpdateView : LinearLayout {
     private lateinit var actionInstallButton: RelativeLayout
     private lateinit var actionReboot: RelativeLayout
     private lateinit var actionRebootButton: RelativeLayout
+    private lateinit var installBtn: RelativeLayout
     private var chipHeader: View
     private var chipDateCurrent: Chip
     private var chipDateTarget: Chip
@@ -210,8 +211,8 @@ class UpdateView : LinearLayout {
 //                mActivity!!.showSnackbar(R.string.snack_update_not_installable,
 //                        Snackbar.LENGTH_LONG)
 //            }
-            Log.d("UPDATER LOG", update?.file?.absolutePath.toString());
-            android.os.RecoverySystem.installPackage(context, update?.file);
+            Log.d("UPDATER LOG", update?.file?.absolutePath.toString())
+            android.os.RecoverySystem.installPackage(context, update?.file)
         }
         actionCancel.setOnClickListener {
             getDeleteDialog(mDownloadId!!).show()
@@ -348,13 +349,13 @@ class UpdateView : LinearLayout {
                 actionProgressBar.progress = update.installProgress
                 actionProgressPause.isEnabled = false
             }
-            mUpdaterController!!.isVerifyingUpdate(downloadId) -> {
-                actionProgress.visibility = VISIBLE
-                setButtonAction(actionInstallButton, Action.INSTALL, false)
-                actionProgressStats.setText(R.string.list_verifying_update)
-                actionProgressBar.isIndeterminate = true
-                actionProgressPause.isEnabled = false
-            }
+//            mUpdaterController!!.isVerifyingUpdate(downloadId) -> {
+//                actionProgress.visibility = VISIBLE
+//                setButtonAction(actionInstallButton, Action.INSTALL, false)
+//                actionProgressStats.setText(R.string.list_verifying_update)
+//                actionProgressBar.isIndeterminate = true
+//                actionProgressPause.isEnabled = false
+//            }
             else -> {
                 actionProgress.visibility = GONE
                 canDelete = true

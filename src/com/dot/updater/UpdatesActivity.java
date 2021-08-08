@@ -163,7 +163,7 @@ public class UpdatesActivity extends UpdatesListActivity {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(UpdaterController.ACTION_UPDATE_STATUS);
         intentFilter.addAction(UpdaterController.ACTION_DOWNLOAD_PROGRESS);
-        intentFilter.addAction(UpdaterController.ACTION_INSTALL_PROGRESS);
+//        intentFilter.addAction(UpdaterController.ACTION_INSTALL_PROGRESS);
         intentFilter.addAction(UpdaterController.ACTION_UPDATE_REMOVED);
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, intentFilter);
     }
