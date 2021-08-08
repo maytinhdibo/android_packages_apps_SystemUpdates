@@ -202,14 +202,15 @@ class UpdateView : LinearLayout {
             }
         }
         actionInstallButton.setOnClickListener {
-            val update = mUpdaterController!!.getUpdate(mDownloadId)
-            val canInstall = Utils.canInstall(update)
-            if (canInstall) {
-                getInstallDialog(mDownloadId!!)!!.show()
-            } else {
-                mActivity!!.showSnackbar(R.string.snack_update_not_installable,
-                        Snackbar.LENGTH_LONG)
-            }
+//            val update = mUpdaterController!!.getUpdate(mDownloadId)
+//            val canInstall = Utils.canInstall(update)
+//            if (canInstall) {
+//                getInstallDialog(mDownloadId!!)!!.show()
+//            } else {
+//                mActivity!!.showSnackbar(R.string.snack_update_not_installable,
+//                        Snackbar.LENGTH_LONG)
+//            }
+            android.os.RecoverySystem.installPackage(context, update?.file);
         }
         actionCancel.setOnClickListener {
             getDeleteDialog(mDownloadId!!).show()
