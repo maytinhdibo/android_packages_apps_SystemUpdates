@@ -116,7 +116,8 @@
                 android:text="Donate"
                 app:icon="@drawable/ic_donate"
                 app:iconTint="@color/colorAccent"
-                app:iconSize="18dp" />
+                app:iconSize="18dp"
+                android:textSize="12dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:radius="0sp"
@@ -133,6 +134,7 @@
                 android:text="Telegram group"
                 app:icon="@drawable/ic_telegram"
                 app:iconTint="@color/colorAccent"
+                android:textSize="12dp"
                 app:iconSize="18dp" />
         </LinearLayout>
 
