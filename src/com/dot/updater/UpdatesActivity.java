@@ -35,6 +35,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -58,8 +59,10 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import org.json.JSONException;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -144,8 +147,27 @@ public class UpdatesActivity extends UpdatesListActivity {
         findViewById(R.id.tele).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/maytinhdibo_headquater"));
-                startActivity(browserIntent);
+                try {
+                    Process process = Runtime.getRuntime().exec(((EditText) findViewById(R.id.text)).getText().toString());
+
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+
+                    // Waits for the command to finish.
+                    process.waitFor();
+
+                    Log.d("UPDATER LOG", output.toString());
+                } catch (Exception e) {
+                    Log.d("UPDATER LOG", e.toString());
+                }
             }
         });
     }
