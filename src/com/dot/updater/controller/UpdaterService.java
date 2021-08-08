@@ -476,7 +476,7 @@ public class UpdaterService extends Service {
 //                        getString(R.string.finalizing_package) :
 //                        getString(R.string.preparing_ota_first_boot));
 //        mNotificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
-//    }
+    }
 
     private void setNotificationTitle(UpdateInfo update) {
         String buildDate = StringGenerator.getDateLocalizedUTC(this,
