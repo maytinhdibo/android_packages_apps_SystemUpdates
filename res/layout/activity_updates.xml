@@ -69,12 +69,72 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/no_new_updates_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.dot.updater.UpdateView
+                android:id="@+id/updateView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
     <FrameLayout
         android:id="@+id/actionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:radius="0sp"
+                android:height="55dp"
+                android:textStyle="bold"
+                android:stateListAnimator="@null"
+                android:backgroundTint="@color/colorPrimaryTranslucent"
+                android:textFontWeight="900"
+                android:textColor="@color/colorAccent"
+                android:id="@+id/donate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Donate"
+                app:icon="@drawable/ic_donate"
+                app:iconTint="@color/colorAccent"
+                app:iconSize="18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:radius="0sp"
+                android:height="55dp"
+                android:textStyle="bold"
+                android:stateListAnimator="@null"
+                android:backgroundTint="@color/colorPrimaryTranslucent"
+                android:textColor="@color/colorAccent"
+                android:id="@+id/tele"
+                android:textFontWeight="900"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Telegram group"
+                app:icon="@drawable/ic_telegram"
+                app:iconTint="@color/colorAccent"
+                app:iconSize="18dp" />
+        </LinearLayout>
 
         <include
             layout="@layout/update_check"
@@ -117,39 +177,7 @@
             android:animateLayoutChanges="true"
             android:visibility="gone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:radius="0sp"
-                android:height="55dp"
-                android:stateListAnimator="@null"
-                android:backgroundTint="@color/colorAccent"
-                android:id="@+id/donate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Donate"
-                app:icon="@drawable/ic_donate"
-                app:iconSize="16dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:radius="0sp"
-                android:height="55dp"
-                android:stateListAnimator="@null"
-                android:backgroundTint="@color/colorAccent"
-                android:id="@+id/tele"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Telegram group"
-                app:icon="@drawable/ic_telegram"
-                app:iconSize="16dp" />
-        </LinearLayout>
     </FrameLayout>
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
