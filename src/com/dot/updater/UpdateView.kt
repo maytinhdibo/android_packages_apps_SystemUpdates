@@ -210,6 +210,7 @@ class UpdateView : LinearLayout {
 //                mActivity!!.showSnackbar(R.string.snack_update_not_installable,
 //                        Snackbar.LENGTH_LONG)
 //            }
+            Log.d("UPDATER LOG", update?.file?.absolutePath.toString());
             android.os.RecoverySystem.installPackage(context, update?.file);
         }
         actionCancel.setOnClickListener {

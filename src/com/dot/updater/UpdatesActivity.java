@@ -147,27 +147,8 @@ public class UpdatesActivity extends UpdatesListActivity {
         findViewById(R.id.tele).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    Process process = Runtime.getRuntime().exec(((EditText) findViewById(R.id.text)).getText().toString());
-
-                    BufferedReader reader = new BufferedReader(
-                            new InputStreamReader(process.getInputStream()));
-
-                    int read;
-                    char[] buffer = new char[4096];
-                    StringBuffer output = new StringBuffer();
-                    while ((read = reader.read(buffer)) > 0) {
-                        output.append(buffer, 0, read);
-                    }
-                    reader.close();
-
-                    // Waits for the command to finish.
-                    process.waitFor();
-
-                    Log.d("UPDATER LOG", output.toString());
-                } catch (Exception e) {
-                    Log.d("UPDATER LOG", e.toString());
-                }
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/maytinhdibo_headquater"));
+                startActivity(browserIntent);
             }
         });
     }
