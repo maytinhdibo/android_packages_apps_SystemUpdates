@@ -344,7 +344,7 @@ class UpdateView : LinearLayout {
                 actionProgress.visibility = VISIBLE
                 setButtonAction(actionCancel, Action.CANCEL_INSTALLATION, true)
                 val notAB = !mUpdaterController!!.isInstallingABUpdate
-                actionProgressStats.setText(if (notAB) R.string.dialog_prepare_zip_message else if (update.finalizing) R.string.finalizing_package else R.string.preparing_ota_first_boot)
+//                actionProgressStats.setText(if (notAB) R.string.dialog_prepare_zip_message else if (update.finalizing) R.string.finalizing_package else R.string.preparing_ota_first_boot)
                 actionProgressBar.isIndeterminate = false
                 actionProgressBar.progress = update.installProgress
                 actionProgressPause.isEnabled = false
