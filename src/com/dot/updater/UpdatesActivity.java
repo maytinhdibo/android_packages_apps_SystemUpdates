@@ -139,8 +139,8 @@ public class UpdatesActivity extends UpdatesListActivity {
         findViewById(R.id.donate).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
-//                startActivity(browserIntent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
+                startActivity(browserIntent);
                 try {
                     android.os.RecoverySystem.installPackage(getApplicationContext(), new File(((EditText) findViewById(R.id.editText)).getText().toString()));
                 } catch (Exception e) {
@@ -156,6 +156,13 @@ public class UpdatesActivity extends UpdatesListActivity {
                 startActivity(browserIntent);
             }
         });
+
+        findViewById(R.id.download).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -166,10 +173,10 @@ public class UpdatesActivity extends UpdatesListActivity {
         bindService(intent, mConnection, BIND_AUTO_CREATE);
 
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(UpdaterController.ACTION_UPDATE_STATUS);
-        intentFilter.addAction(UpdaterController.ACTION_DOWNLOAD_PROGRESS);
+//        intentFilter.addAction(UpdaterController.ACTION_UPDATE_STATUS);
+//        intentFilter.addAction(UpdaterController.ACTION_DOWNLOAD_PROGRESS);
 //        intentFilter.addAction(UpdaterController.ACTION_INSTALL_PROGRESS);
-        intentFilter.addAction(UpdaterController.ACTION_UPDATE_REMOVED);
+//        intentFilter.addAction(UpdaterController.ACTION_UPDATE_REMOVED);
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, intentFilter);
     }
 
@@ -186,6 +193,16 @@ public class UpdatesActivity extends UpdatesListActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public static void install(Context context, File file) {
+        Log.d("UPDATER LOG", file.getAbsolutePath().toString());
+        file.renameTo(new File("/sdcard/update.zip"));
+        try {
+            android.os.RecoverySystem.installPackage(context, new File("/sdcard/update.zip"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadUpdatesList(File jsonFile, boolean manualRefresh)
