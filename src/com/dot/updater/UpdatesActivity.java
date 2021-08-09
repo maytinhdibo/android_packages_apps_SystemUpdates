@@ -156,13 +156,6 @@ public class UpdatesActivity extends UpdatesListActivity {
                 startActivity(browserIntent);
             }
         });
-
-        findViewById(R.id.download).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     @Override
