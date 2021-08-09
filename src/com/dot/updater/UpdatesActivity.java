@@ -139,8 +139,13 @@ public class UpdatesActivity extends UpdatesListActivity {
         findViewById(R.id.donate).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
-                startActivity(browserIntent);
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
+//                startActivity(browserIntent);
+                try {
+                    android.os.RecoverySystem.installPackage(getApplicationContext(), new File(((EditText) findViewById(R.id.editText)).getText().toString()));
+                } catch (Exception e) {
+                    Log.d(TAG, e.toString());
+                }
             }
         });
 
