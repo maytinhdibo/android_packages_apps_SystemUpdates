@@ -190,9 +190,9 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     public static void install(Context context, File file) {
         Log.d("UPDATER LOG", file.getAbsolutePath().toString());
-        file.renameTo(new File("/sdcard/update.zip"));
+//        file.renameTo(new File("/sdcard/update.zip"));
         try {
-            android.os.RecoverySystem.installPackage(context, new File("/sdcard/update.zip"));
+            android.os.RecoverySystem.installPackage(context, file);
         } catch (IOException e) {
             e.printStackTrace();
         }
