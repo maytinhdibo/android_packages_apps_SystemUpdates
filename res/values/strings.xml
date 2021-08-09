@@ -20,7 +20,7 @@
 
     <!-- Directory where the update files will be downloaded and stored.
          WARNING: The application can and will delete any unknown file. -->
-    <string name="download_path" translatable="false">/sdcard</string>
+    <string name="download_path" translatable="false">/sdcard/Android/data/com.dot.updater</string>
 
     <!-- Directory where the downloads will be exported to.
          The path is relative to the root of the external storage.-->

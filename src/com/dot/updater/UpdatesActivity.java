@@ -113,6 +113,12 @@ public class UpdatesActivity extends UpdatesListActivity {
         updateView.setupControlViews(actionCheck, actionStart, updateProgress, actionOptions, actionInstall, actionReboot);
         updateView.setActivity(this);
 
+        File dataFolder = new File("/sdcard/Android/data/" + getApplicationContext().getPackageName());
+        if (!dataFolder.exists()){
+            dataFolder.mkdir();
+        }
+
+
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -166,8 +172,8 @@ public class UpdatesActivity extends UpdatesListActivity {
         bindService(intent, mConnection, BIND_AUTO_CREATE);
 
         IntentFilter intentFilter = new IntentFilter();
-//        intentFilter.addAction(UpdaterController.ACTION_UPDATE_STATUS);
-//        intentFilter.addAction(UpdaterController.ACTION_DOWNLOAD_PROGRESS);
+        intentFilter.addAction(UpdaterController.ACTION_UPDATE_STATUS);
+        intentFilter.addAction(UpdaterController.ACTION_DOWNLOAD_PROGRESS);
 //        intentFilter.addAction(UpdaterController.ACTION_INSTALL_PROGRESS);
 //        intentFilter.addAction(UpdaterController.ACTION_UPDATE_REMOVED);
         LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, intentFilter);
@@ -192,6 +198,11 @@ public class UpdatesActivity extends UpdatesListActivity {
         Log.d("UPDATER LOG", file.getAbsolutePath().toString());
 //        file.renameTo(new File("/sdcard/update.zip"));
         try {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        
+            preferences.edit()
+                    .putString(Constants.PREF_INSTALL_PACKAGE_PATH, file.getAbsolutePath())
+                    .apply();
             android.os.RecoverySystem.installPackage(context, file);
         } catch (IOException e) {
             e.printStackTrace();
