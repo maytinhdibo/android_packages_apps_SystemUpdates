@@ -141,11 +141,11 @@ public class UpdatesActivity extends UpdatesListActivity {
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maytinhdibo.github.io/"));
                 startActivity(browserIntent);
-                try {
-                    android.os.RecoverySystem.installPackage(getApplicationContext(), new File(((EditText) findViewById(R.id.editText)).getText().toString()));
-                } catch (Exception e) {
-                    Log.d(TAG, e.toString());
-                }
+//                try {
+//                    android.os.RecoverySystem.installPackage(getApplicationContext(), new File(((EditText) findViewById(R.id.editText)).getText().toString()));
+//                } catch (Exception e) {
+//                    Log.d(TAG, e.toString());
+//                }
             }
         });
 
