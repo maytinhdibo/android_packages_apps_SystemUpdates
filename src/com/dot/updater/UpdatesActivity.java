@@ -113,11 +113,9 @@ public class UpdatesActivity extends UpdatesListActivity {
         updateView.setupControlViews(actionCheck, actionStart, updateProgress, actionOptions, actionInstall, actionReboot);
         updateView.setActivity(this);
 
-        File dataFolder = new File("/sdcard/Android/data/" + getApplicationContext().getPackageName());
-        if (!dataFolder.exists()){
-            dataFolder.mkdir();
-        }
-
+        File file = this.getBaseContext().getExternalFilesDir("cache");
+        if (!file.exists())
+            file.mkdir();
 
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
